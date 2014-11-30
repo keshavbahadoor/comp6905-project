@@ -19,7 +19,8 @@ namespace Healthee.Models
         DoctorRegistration = 1,
         PatientRegistratoin = 2, 
         PatientSearch = 3,
-        UpdateProfile = 4
+        UpdateProfile = 4,
+        DoctorLogin = 5
     }
     /// <summary>
     /// Status enumeration 
