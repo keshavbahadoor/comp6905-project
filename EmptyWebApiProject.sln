@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealtheeServer", "EmptyWebApiProject\HealtheeServer.csproj", "{C35EACEE-B743-401C-AB6A-BDB595AF5BFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealtheeTestingProject", "HealtheeTestingProject\HealtheeTestingProject.csproj", "{CE999D8E-8B13-4C58-9475-6FC4480F2E02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C35EACEE-B743-401C-AB6A-BDB595AF5BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35EACEE-B743-401C-AB6A-BDB595AF5BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35EACEE-B743-401C-AB6A-BDB595AF5BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35EACEE-B743-401C-AB6A-BDB595AF5BFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE999D8E-8B13-4C58-9475-6FC4480F2E02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE999D8E-8B13-4C58-9475-6FC4480F2E02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE999D8E-8B13-4C58-9475-6FC4480F2E02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE999D8E-8B13-4C58-9475-6FC4480F2E02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
