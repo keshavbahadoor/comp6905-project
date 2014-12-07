@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Healthee.Logging; 
 
 namespace Healthee.App_Start
 {
@@ -25,6 +26,9 @@ namespace Healthee.App_Start
             // For more information, refer to: http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();
             //config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            // Add request and response logging 
+            config.MessageHandlers.Add(new RequestResponseLogger());
         }
     }
 }

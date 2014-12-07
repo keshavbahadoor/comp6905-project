@@ -25,10 +25,19 @@ namespace Healthee.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\Logs")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Logs")]
         public string LogDirectory {
             get {
                 return ((string)(this["LogDirectory"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Logs\\request.log")]
+        public string RequestLogFile {
+            get {
+                return ((string)(this["RequestLogFile"]));
             }
         }
     }

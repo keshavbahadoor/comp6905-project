@@ -26,9 +26,11 @@ namespace Healthee.Controllers
         /// <returns></returns>
         [HttpPost]
         public LoginData DoctorLogin([FromBody]JToken value)
-        {
+        { 
             return Authentication.DoctorAuth((string)value.SelectToken("username"),
                                              (string)value.SelectToken("password"));
+
+            
         }
 
     }

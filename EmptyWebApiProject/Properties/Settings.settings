@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="LogDirectory" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\\Logs</Value>
+      <Value Profile="(Default)">C:\Logs</Value>
+    </Setting>
+    <Setting Name="RequestLogFile" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Logs\request.log</Value>
     </Setting>
   </Settings>
 </SettingsFile>
