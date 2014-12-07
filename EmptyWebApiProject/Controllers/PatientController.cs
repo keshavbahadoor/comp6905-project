@@ -19,10 +19,18 @@ namespace Healthee.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet]
-        public PatientData GetPatientData(int id)
+        [HttpPost]
+        public PatientData GetPatientData([FromBody]JToken value)
         {
-            return DataService.GetPatientData(id);
+            int docId = 0;
+            int.TryParse((string)value.SelectToken("doctorid"), out docId);
+            if (DoctorDAL.DoctorExists(docId))
+            {
+                int patid = 0; 
+                int.TryParse((string)value.SelectToken("patientid"), out patid);
+                return DataService.GetPatientData(patid);
+            }
+            return null; 
         }
 
         /// <summary>
@@ -33,9 +41,9 @@ namespace Healthee.Controllers
         public List<PatientData> SearchPatientData([FromBody]JToken value)
         {
             int docId = 0;
-            int.TryParse((string)value.SelectToken("doctorid"), out docId); 
+            int.TryParse((string)value.SelectToken("doctorid"), out docId);
 
-            if (DataService.DoctorExists(docId))
+            if (DoctorDAL.DoctorExists(docId))
             {
                 List<PatientData> patients = DataService.GetPatients((string)value.SelectToken("firstname"),
                                                    (string)value.SelectToken("lastname"),

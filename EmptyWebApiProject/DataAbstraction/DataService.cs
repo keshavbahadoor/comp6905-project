@@ -15,18 +15,8 @@ namespace Healthee.DataAbstraction
     public class DataService
     {
         public static bool DEBUG = false;
-        
-        public static DoctorType GetDoctorType(int id)
-        { 
-            HealtheeEntities db = new HealtheeEntities();
-            if (DEBUG) db.Database.Log = Console.WriteLine; 
 
-            var query = from dt in db.DoctorTypes
-                        where dt.DoctorTypeID == id
-                        select dt;
-            DoctorType dType = query.Single();
-            return dType;
-        }
+       
         /// <summary>
         /// Returns patient data using patient id 
         /// </summary>
@@ -92,59 +82,42 @@ namespace Healthee.DataAbstraction
                 return null;
             }
         }
+        
+       
         /// <summary>
-        /// Inserts row do Activity table 
+        /// Inserts person data into database 
+        /// returns last inserted id 
         /// </summary>
-        /// <param name="activityType"></param>
-        /// <param name="doctorID"></param>
-        /// <param name="statusID"></param>
-        /// <param name="details"></param>
-        /// <param name="data"></param>
-        public static void AddDoctorActivity(int activityType, int doctorID, int statusID, string details, string data)
-        {
-            try
-            {
-                HealtheeEntities db = new HealtheeEntities();
-                if (DEBUG) db.Database.Log = Console.WriteLine;
-
-                db.Activities.Add(new Activity()
-                {
-                    ActivityTypeID = activityType,
-                    DoctorID = doctorID, 
-                    StatusID = statusID, 
-                    Details = details, 
-                    Data = data,
-                    ActivityDate = DateTime.Now
-                });
-                db.SaveChanges(); 
-            }
-            catch (Exception e)
-            {
-                // log exception 
-            }
-        }
-        /// <summary>
-        /// Checks if a doctor exists on the database
-        /// Returns true or false if otherwise 
-        /// </summary>
-        /// <param name="doctorID"></param>
         /// <returns></returns>
-        public static bool DoctorExists(int doctorID)
+        public static int InsertPerson(string firstname, string lastname, string gender, DateTime dob, string nationalid, string mobilenumber,
+                                       string homenumber, string worknumber, string address1, string address2, string city, string country)
         {
             try
             {
                 HealtheeEntities db = new HealtheeEntities();
                 if (DEBUG) db.Database.Log = Console.WriteLine;
+                Person p = new Person { 
+                        FirstName = firstname, 
+                        LastName = lastname, 
+                        Gender = gender,
+                        //DateOfBirth = dob,
+                        NationalID = nationalid,
+                        MobileNumber = mobilenumber,
+                        HomeNumber = homenumber,
+                        WorkNumber = worknumber,
+                        Address1 = address1, 
+                        Address2 = address2,
+                        City = city,
+                        Country = country
+                };
 
-                var count = (from d in db.Doctors
-                             where d.DoctorID == doctorID
-                             select d).Count();
-                if (count > 0) return true;
-                return false; 
+                db.People.Add( p);
+                db.SaveChanges();
+                return p.PersonID;
             }
             catch(Exception e)
             {
-                return false; 
+                return 0;
             }
         }
 

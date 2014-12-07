@@ -28,7 +28,7 @@ namespace Healthee.App_Start
             //config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             // Add request and response logging 
-            config.MessageHandlers.Add(new RequestResponseLogger());
+            //config.MessageHandlers.Add(new RequestResponseLogger());
         }
     }
 }

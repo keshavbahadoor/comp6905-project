@@ -22,8 +22,8 @@ namespace Healthee.Logging
             string headers = request.Content.Headers.ToString();            
 
 
-            LogToFile("Request Parameters: " + requestBody);
-            LogToFile("Header: " + headers); 
+            LogToFile(DateTime.Now.ToString() + " Request Parameters: " + requestBody);
+            LogToFile(DateTime.Now.ToString() + "Header: " + headers); 
 
             //let other handlers process the request
             return await base.SendAsync(request, cancellationToken)

@@ -43,7 +43,7 @@ namespace Healthee.Models
             if (doctorID < 0 || activityType < 0 || statusID < 0) 
                 return false;
 
-            DataService.AddDoctorActivity(activityType, doctorID, statusID, details, data);
+            DoctorDAL.AddDoctorActivity(activityType, doctorID, statusID, details, data);
             return true;
         }
 
