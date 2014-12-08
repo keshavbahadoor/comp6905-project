@@ -7,12 +7,11 @@ using Healthee.DataModels;
 
 namespace Healthee.DataAbstraction
 {
-    public class DoctorDAL
-    {
-        /// <summary>
-        /// Doctor Data Abstraction layer 
-        /// </summary>
-        public static bool DEBUG = false;
+    /// <summary>
+    /// Doctor Data Abstraction layer 
+    /// </summary>
+    public class DoctorDAL : AbstractDAL
+    {  
 
         /// <summary>
         ///  GEt doctor data 

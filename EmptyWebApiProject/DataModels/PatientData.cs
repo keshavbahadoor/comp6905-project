@@ -11,5 +11,8 @@ namespace Healthee.DataModels
         public Person Person { get; set; }
         public int PatientID { get; set; }
         public int MedicalRecordID { get; set; }
+        public string Allergies { get; set; }
+        public string Medication { get; set; }
+        public string Notes { get; set; }
     }
 }

@@ -120,9 +120,12 @@
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="DataAbstraction\AbstractDAL.cs" />
     <Compile Include="DataAbstraction\Authentication.cs" />
-    <Compile Include="DataAbstraction\DataService.cs" />
+    <Compile Include="DataAbstraction\PersonDAL.cs" />
     <Compile Include="DataAbstraction\DoctorDAL.cs" />
+    <Compile Include="DataAbstraction\MedicalDAL.cs" />
+    <Compile Include="DataAbstraction\PatientDAL.cs" />
     <Compile Include="DataModels\DoctorData.cs" />
     <Compile Include="DataModels\ErrorData.cs" />
     <Compile Include="DataModels\LoginData.cs" />

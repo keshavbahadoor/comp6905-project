@@ -5,6 +5,8 @@ using System.Web;
 using Healthee.Models;
 using Healthee.EFModels;
 using Healthee.DataModels;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace Healthee.DataAbstraction
 {
@@ -23,12 +25,13 @@ namespace Healthee.DataAbstraction
             {
                 return new LoginData() {  loggedin = false };
             }
+       
             try
             {
                 HealtheeEntities db = new HealtheeEntities();
                 var query = (from d in db.Doctors
                              where d.Username == username
-                             && d.Password == password
+                             &&  d.Password == password
                              select d);
                 if (query.Count() > 0)
                 {
@@ -46,6 +49,23 @@ namespace Healthee.DataAbstraction
             {
                 return new LoginData() { loggedin = false };
             }
+        }
+        /// <summary>
+        /// Encrypts a given password and returns the encrypted data
+        /// as a base64 string.
+        /// </summary>
+        public static string Encrypt(string plainText)
+        {
+            // TODO : Replace with proper hashing and salt
+            return plainText ; 
+        }
+        /// <summary>
+        /// Decrypts a given string.
+        /// </summary>
+        public static string Decrypt(string cipher)
+        {
+            // TODO : Replace 
+            return cipher; 
         }
     }
 }
