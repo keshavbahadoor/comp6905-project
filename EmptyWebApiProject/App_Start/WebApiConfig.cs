@@ -29,6 +29,7 @@ namespace Healthee.App_Start
 
             // Add request and response logging 
             //config.MessageHandlers.Add(new RequestResponseLogger());
+            //config.EnableSystemDiagnosticsTracing(); 
         }
     }
 }

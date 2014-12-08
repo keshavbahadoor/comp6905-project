@@ -12,17 +12,14 @@ namespace Healthee.EFModels
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class Appointment
     {
-        public Patient()
-        {
-            this.Appointments = new HashSet<Appointment>();
-        }
-    
+        public int AppointmentID { get; set; }
+        public int DoctorID { get; set; }
         public int PatientID { get; set; }
-        public int PersonID { get; set; }
-        public int MedicalRecordID { get; set; }
-    
-        public virtual ICollection<Appointment> Appointments { get; set; }
+        public int StatusID { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
+        public string Notes { get; set; }
     }
 }

@@ -17,21 +17,17 @@ namespace HealtheeTestingProject
         static void Main(string[] args)
         {
             Console.WriteLine("Starting tests");
-            DataService.DEBUG = true;
-            try
-            {
 
-                int id;
-                int.TryParse("n", out id); 
-                Console.WriteLine(id); 
+            AppointmentDAL.DEBUG = true; 
+            //AppointmentDAL.InsertAppointment(1, 22, 1, "sometime", "sometime", "somet  ime");
+            //List<Appointment> a = AppointmentDAL.GetDoctorAppointments(1);
 
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error! : " + e.Message); 
-                Console.WriteLine(e.StackTrace); 
-            }
+            AppointmentDAL.InsertAppointment(1, 32, (int)StatusEnum.Success, "2015-01-01", "8:00AM", "");
+
+             
+
+            //TestDB();
+            //TestPatientSearch();
 
             Console.ReadLine(); 
         }
@@ -56,7 +52,7 @@ namespace HealtheeTestingProject
         private static void TestPatientSearch()
         {
             // Testing person search 
-            List<PatientData> pData = DataService.GetPatients("Cara", null, null, null);
+            List<PatientData> pData = PatientDAL.GetPatients("Cara", null, null, null);
             Console.WriteLine(toJSON(pData));
         }
     }

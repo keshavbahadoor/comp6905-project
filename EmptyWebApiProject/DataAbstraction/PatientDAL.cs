@@ -111,6 +111,31 @@ namespace Healthee.DataAbstraction
             }
         }
 
+        /// <summary>
+        /// returns true if patient exists 
+        /// false otherwise 
+        /// </summary>
+        /// <param name="doctorID"></param>
+        /// <returns></returns>
+        public static bool PatientExist(int patientid)
+        {
+            try
+            {
+                HealtheeEntities db = new HealtheeEntities();
+                if (DEBUG) db.Database.Log = Console.WriteLine;
+
+                var count = (from p in db.Patients
+                             where p.PatientID == patientid
+                             select p).Count();
+                if (count > 0) return true;
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
         
     }
 }

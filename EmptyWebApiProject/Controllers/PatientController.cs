@@ -82,11 +82,11 @@ namespace Healthee.Controllers
             string allergies = (string)value.SelectToken("allergies");
             string medication = (string)value.SelectToken("medication");
 
-            DateTime dob;
-            if (!DateTime.TryParse((string)value.SelectToken("dateofbirth"), out dob))
-            {
-                dob = DateTime.MinValue;
-            }
+            DateTime dob = DateTime.MinValue;
+            //if (! DateTime.TryParse((string)value.SelectToken("dateofbirth"), out dob))
+            //{
+            //    dob = DateTime.MinValue;
+            //}
             
             if (firstname == null) return MessageHandler.Error("You must enter a first name");
             if (lastname == null) return MessageHandler.Error("You must enter a last name");
@@ -144,11 +144,11 @@ namespace Healthee.Controllers
             string allergies = (string)value.SelectToken("allergies");
             string medication = (string)value.SelectToken("medication");
 
-            DateTime dob;
-            if (! DateTime.TryParse((string)value.SelectToken("dateofbirth"), out dob))
-            {
-                dob = DateTime.MinValue;
-            }
+            DateTime dob = DateTime.MinValue;
+            //if (! DateTime.TryParse((string)value.SelectToken("dateofbirth"), out dob))
+            //{
+            //    dob = DateTime.MinValue;
+            //}
 
             if (firstname == null) return MessageHandler.Error("You must enter a first name");
             if (lastname == null) return MessageHandler.Error("You must enter a last name");

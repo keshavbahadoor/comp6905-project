@@ -19,6 +19,10 @@
         <AssociationConnector Association="HealtheeModel.FK_Patient_Person" ManuallyRouted="false" />
         <EntityTypeShape EntityType="HealtheeModel.MedicalRecord" Width="1.5" PointX="7.375" PointY="0.875" />
         <AssociationConnector Association="HealtheeModel.FK_Patient_MedicalRecord" />
+        <EntityTypeShape EntityType="HealtheeModel.Appointment" Width="1.5" PointX="8.25" PointY="4.25" />
+        <AssociationConnector Association="HealtheeModel.FK_Appointment_Doctor" />
+        <AssociationConnector Association="HealtheeModel.FK_Appointment_Patient" />
+        <AssociationConnector Association="HealtheeModel.FK_Appointment_Status" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

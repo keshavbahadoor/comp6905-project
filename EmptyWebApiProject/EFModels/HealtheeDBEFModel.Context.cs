@@ -33,5 +33,6 @@ namespace Healthee.EFModels
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<MedicalRecord> MedicalRecords { get; set; }
+        public virtual DbSet<Appointment> Appointments { get; set; }
     }
 }

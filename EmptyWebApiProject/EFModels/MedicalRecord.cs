@@ -14,16 +14,9 @@ namespace Healthee.EFModels
     
     public partial class MedicalRecord
     {
-        public MedicalRecord()
-        {
-            this.Patients = new HashSet<Patient>();
-        }
-    
         public int MedicalRecordID { get; set; }
         public string Allergies { get; set; }
         public string Medication { get; set; }
         public string Notes { get; set; }
-    
-        public virtual ICollection<Patient> Patients { get; set; }
     }
 }

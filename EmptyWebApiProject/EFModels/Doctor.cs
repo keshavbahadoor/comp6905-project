@@ -16,7 +16,7 @@ namespace Healthee.EFModels
     {
         public Doctor()
         {
-            this.Activities = new HashSet<Activity>();
+            this.Appointments = new HashSet<Appointment>();
         }
     
         public int DoctorID { get; set; }
@@ -25,8 +25,6 @@ namespace Healthee.EFModels
         public string Username { get; set; }
         public string Password { get; set; }
     
-        public virtual ICollection<Activity> Activities { get; set; }
-        public virtual DoctorType DoctorType { get; set; }
-        public virtual Person Person { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }
