@@ -22,15 +22,15 @@ namespace Healthee.Controllers
         [HttpPost]
         public PatientData GetPatientData([FromBody]JToken value)
         {
-            int docId = 0;
-            int.TryParse((string)value.SelectToken("doctorid"), out docId);
-            if (DoctorDAL.DoctorExists(docId))
-            {
+            //int docId = 0;
+            //int.TryParse((string)value.SelectToken("doctorid"), out docId);
+            //if (DoctorDAL.DoctorExists(docId))
+            //{
                 int patid = 0; 
                 int.TryParse((string)value.SelectToken("patientid"), out patid);
                 return PatientDAL.GetPatientData(patid);
-            }
-            return null; 
+            //}
+            //return null; 
         }
 
         /// <summary>

@@ -29,10 +29,10 @@ namespace Healthee.EFModels
         public virtual DbSet<ActivityType> ActivityTypes { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<DoctorType> DoctorTypes { get; set; }
-        public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Person> People { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<MedicalRecord> MedicalRecords { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
     }
 }

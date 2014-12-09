@@ -14,15 +14,10 @@ namespace Healthee.EFModels
     
     public partial class Patient
     {
-        public Patient()
-        {
-            this.Appointments = new HashSet<Appointment>();
-        }
-    
         public int PatientID { get; set; }
         public int PersonID { get; set; }
         public int MedicalRecordID { get; set; }
-    
-        public virtual ICollection<Appointment> Appointments { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }

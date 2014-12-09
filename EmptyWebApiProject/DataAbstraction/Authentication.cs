@@ -25,7 +25,7 @@ namespace Healthee.DataAbstraction
             {
                 return new LoginData() {  loggedin = false };
             }
-       
+            // TODO : password encryption 
             try
             {
                 HealtheeEntities db = new HealtheeEntities();
@@ -44,6 +44,44 @@ namespace Healthee.DataAbstraction
                     return new LoginData() { loggedin = false };
                 }
                 
+            }
+            catch (Exception ex)
+            {
+                return new LoginData() { loggedin = false };
+            }
+        }
+
+        /// <summary>
+        /// authenticates doctor login 
+        /// creates activity for successful login 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static LoginData PatientAuth(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                return new LoginData() { loggedin = false };
+            }
+            // TODO : password encryption 
+            try
+            {
+                HealtheeEntities db = new HealtheeEntities();
+                var query = (from p in db.Patients
+                             where p.Username == username
+                             && p.Password == password
+                             select p);
+                if (query.Count() > 0)
+                {
+                    Patient p = query.FirstOrDefault(); 
+                    return new LoginData() { patientid = p.PatientID, loggedin = true };
+                }
+                else
+                {
+                    return new LoginData() { loggedin = false };
+                }
+
             }
             catch (Exception ex)
             {

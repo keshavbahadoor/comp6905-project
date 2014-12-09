@@ -33,5 +33,19 @@ namespace Healthee.Controllers
             
         }
 
+        /// <summary>
+        /// handles patient authentication 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public LoginData PatientLogin([FromBody]JToken value)
+        {
+            return Authentication.PatientAuth((string)value.SelectToken("username"),
+                                             (string)value.SelectToken("password"));
+
+
+        }
+
     }
 }

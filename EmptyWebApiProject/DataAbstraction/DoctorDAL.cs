@@ -48,6 +48,39 @@ namespace Healthee.DataAbstraction
         }
 
         /// <summary>
+        /// Basic search functionality
+        /// - returns doctor data in list form 
+        /// </summary> 
+        /// <returns></returns>
+        public static List<DoctorData> GetDoctors(string firstName, string lastName, string city )
+        {
+            try
+            {
+                HealtheeEntities db = new HealtheeEntities();
+                if (DEBUG) db.Database.Log = Console.WriteLine;
+
+                var query = from p in db.People
+                            join doctors in db.Doctors on p.PersonID equals doctors.PersonID
+                            join doctortypes in db.DoctorTypes on doctors.DoctorTypeID equals doctortypes.DoctorTypeID
+                            where (string.IsNullOrEmpty(firstName) ? true : p.FirstName == firstName)
+                            && (string.IsNullOrEmpty(lastName) ? true : p.LastName == lastName)
+                            && (string.IsNullOrEmpty(city) ? true : p.City == city) 
+                            select new DoctorData()
+                            {
+                                Person = p,
+                                DoctorID = doctors.DoctorID, 
+                                DoctorType = doctortypes.Type, 
+                                Username = doctors.Username
+                            };
+                return query.ToList<DoctorData>();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Ged doctor type by id 
         /// </summary>
         /// <param name="id"></param>
