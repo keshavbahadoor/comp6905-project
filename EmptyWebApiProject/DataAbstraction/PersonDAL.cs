@@ -21,7 +21,7 @@ namespace Healthee.DataAbstraction
         /// </summary>
         /// <returns></returns>
         public static int InsertPerson(string firstname, string lastname, string gender, DateTime dob, string nationalid, string mobilenumber,
-                                       string homenumber, string worknumber, string address1, string address2, string city, string country)
+                                       string homenumber, string worknumber, string address1, string address2, string city, string country, string email)
         {
             try
             {
@@ -38,7 +38,8 @@ namespace Healthee.DataAbstraction
                         Address1 = address1, 
                         Address2 = address2,
                         City = city,
-                        Country = country
+                        Country = country,
+                        Email = email
                 };
 
                 if (dob != DateTime.MinValue) p.DateOfBirth = dob; 
@@ -70,7 +71,7 @@ namespace Healthee.DataAbstraction
         /// <param name="country"></param>
         /// <returns></returns>
         public static bool UpdatePerson(int personid, string firstname, string lastname, string gender, DateTime dob, string nationalid, string mobilenumber,
-                                       string homenumber, string worknumber, string address1, string address2, string city, string country)
+                                       string homenumber, string worknumber, string address1, string address2, string city, string country, string email)
         {
             try
             {
@@ -94,6 +95,7 @@ namespace Healthee.DataAbstraction
                 person.Address2 = address2;
                 person.City = city;
                 person.Country = country;
+                person.Email = email;
                 person.LastUpdated = DateTime.Now;
 
                 db.SaveChanges();

@@ -52,6 +52,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\..\MailGunTest\MailGunTest\MailGunTest\bin\Debug\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -180,6 +183,7 @@
     <Compile Include="Logging\LoggingHandler.cs" />
     <Compile Include="Logging\SQLLogger.cs" />
     <Compile Include="Models\IPersonRepository.cs" />
+    <Compile Include="Models\MailService.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\PersonRepository.cs" />

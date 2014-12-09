@@ -26,8 +26,8 @@ namespace Healthee.DataAbstraction
                      DoctorID = doctorid,
                      PatientID = patientid,
                      StatusID = statusid,
-                     Date = date,
-                     Time= time,
+                     AppointmentDate = date,
+                     AppointmentTime= time,
                      Notes = notes 
                 };
 

@@ -14,7 +14,14 @@ namespace Healthee.EFModels
     
     public partial class Status
     {
+        public Status()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
+    
         public int StatusID { get; set; }
         public string Name { get; set; }
+    
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Healthee.Controllers
             //int docId = 0;
             //int.TryParse((string)value.SelectToken("doctorid"), out docId);
             //if (DoctorDAL.DoctorExists(docId))
-            //{
+            //{  
                 int patid = 0; 
                 int.TryParse((string)value.SelectToken("patientid"), out patid);
                 return PatientDAL.GetPatientData(patid);
@@ -100,7 +100,8 @@ namespace Healthee.Controllers
                                                     (string)value.SelectToken("address1"),
                                                     (string)value.SelectToken("address2"),
                                                     (string)value.SelectToken("city"),
-                                                    (string)value.SelectToken("country")
+                                                    (string)value.SelectToken("country"),
+                                                    (string)value.SelectToken("email")
                 );
              
             // Add medical record 
@@ -108,8 +109,14 @@ namespace Healthee.Controllers
 
             // Add patient mapping 
             PatientDAL.InsertPatient(personID, medicalRecordId); 
-
+            
+            // Add activity 
             UserActivity.AddDoctorActivity((int)ActivityEnum.PatientRegistratoin, doctorid, (int)StatusEnum.Success, "Success", value.ToString());
+
+            // Email registration 
+            MailService.SendRegistrationEmail((string)value.SelectToken("email"));
+
+            // return success
             return MessageHandler.Success("You have successfully registered a new patient on Healthee!");
         }
         /// <summary>
@@ -162,7 +169,8 @@ namespace Healthee.Controllers
                                                     (string)value.SelectToken("address1"),
                                                     (string)value.SelectToken("address2"),
                                                     (string)value.SelectToken("city"),
-                                                    (string)value.SelectToken("country"));
+                                                    (string)value.SelectToken("country"),
+                                                    (string)value.SelectToken("email"));
             // Update medical record 
             MedicalDAL.UpdateMedicalRecord(medicalrecordid,
                                             (string)value.SelectToken("allergies"),

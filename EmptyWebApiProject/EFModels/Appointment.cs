@@ -18,8 +18,8 @@ namespace Healthee.EFModels
         public int DoctorID { get; set; }
         public int PatientID { get; set; }
         public int StatusID { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
+        public string AppointmentDate { get; set; }
+        public string AppointmentTime { get; set; }
         public string Notes { get; set; }
     }
 }

@@ -32,8 +32,8 @@
           <Property Name="DoctorID" Type="int" Nullable="false" />
           <Property Name="PatientID" Type="int" Nullable="false" />
           <Property Name="StatusID" Type="int" Nullable="false" />
-          <Property Name="Date" Type="varchar" MaxLength="50" />
-          <Property Name="Time" Type="varchar" MaxLength="50" />
+          <Property Name="AppointmentDate" Type="varchar" MaxLength="50" />
+          <Property Name="AppointmentTime" Type="varchar" MaxLength="50" />
           <Property Name="Notes" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Doctor">
@@ -80,6 +80,7 @@
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Gender" Type="char" MaxLength="2" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="datetime" />
           <Property Name="NationalID" Type="varchar" MaxLength="50" />
           <Property Name="MobileNumber" Type="varchar" MaxLength="50" />
@@ -293,31 +294,13 @@
           <Property Name="DoctorTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Person">
-          <Key>
-            <PropertyRef Name="PersonID" />
-          </Key>
-          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
-          <Property Name="NationalID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="HomeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="WorkNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Status">
           <Key>
             <PropertyRef Name="StatusID" />
           </Key>
           <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointments" Relationship="HealtheeModel.FK_Appointment_Status" FromRole="Status" ToRole="Appointment" />
         </EntityType>
         <Association Name="FK_Activity_Doctor">
           <End Role="Doctor" Type="Self.Doctor" Multiplicity="1" />
@@ -355,24 +338,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Doctor_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1" />
-          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonID" />
-            </Principal>
-            <Dependent Role="Doctor">
-              <PropertyRef Name="PersonID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="HealtheeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activities" EntityType="Self.Activity" />
           <EntitySet Name="ActivityTypes" EntityType="Self.ActivityType" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="DoctorTypes" EntityType="Self.DoctorType" />
-          <EntitySet Name="People" EntityType="Self.Person" />
           <EntitySet Name="Status" EntityType="Self.Status" />
           <AssociationSet Name="FK_Activity_Doctor" Association="Self.FK_Activity_Doctor">
             <End Role="Doctor" EntitySet="Doctors" />
@@ -386,32 +356,33 @@
             <End Role="DoctorType" EntitySet="DoctorTypes" />
             <End Role="Doctor" EntitySet="Doctors" />
           </AssociationSet>
-          <AssociationSet Name="FK_Doctor_Person" Association="Self.FK_Doctor_Person">
+          <EntitySet Name="MedicalRecords" EntityType="HealtheeModel.MedicalRecord" />
+          <EntitySet Name="Patients" EntityType="HealtheeModel.Patient" />
+          <AssociationSet Name="FK_Patient_MedicalRecord" Association="HealtheeModel.FK_Patient_MedicalRecord">
+            <End Role="MedicalRecord" EntitySet="MedicalRecords" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
+          <EntitySet Name="People" EntityType="HealtheeModel.Person" />
+          <AssociationSet Name="FK_Doctor_Person" Association="HealtheeModel.FK_Doctor_Person">
             <End Role="Person" EntitySet="People" />
             <End Role="Doctor" EntitySet="Doctors" />
           </AssociationSet>
-          <EntitySet Name="MedicalRecords" EntityType="HealtheeModel.MedicalRecord" />
+          <AssociationSet Name="FK_Patient_Person" Association="HealtheeModel.FK_Patient_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Patient" EntitySet="Patients" />
+          </AssociationSet>
           <EntitySet Name="Appointments" EntityType="HealtheeModel.Appointment" />
           <AssociationSet Name="FK_Appointment_Doctor" Association="HealtheeModel.FK_Appointment_Doctor">
             <End Role="Doctor" EntitySet="Doctors" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Appointment_Status" Association="HealtheeModel.FK_Appointment_Status">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Appointment" EntitySet="Appointments" />
-          </AssociationSet>
-          <EntitySet Name="Patients" EntityType="HealtheeModel.Patient" />
           <AssociationSet Name="FK_Appointment_Patient" Association="HealtheeModel.FK_Appointment_Patient">
             <End Role="Patient" EntitySet="Patients" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK_Patient_MedicalRecord" Association="HealtheeModel.FK_Patient_MedicalRecord">
-            <End Role="MedicalRecord" EntitySet="MedicalRecords" />
-            <End Role="Patient" EntitySet="Patients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Patient_Person" Association="HealtheeModel.FK_Patient_Person">
-            <End Role="Person" EntitySet="People" />
-            <End Role="Patient" EntitySet="Patients" />
+          <AssociationSet Name="FK_Appointment_Status" Association="HealtheeModel.FK_Appointment_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="MedicalRecord">
@@ -423,6 +394,73 @@
           <Property Name="Medication" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="MedicalRecordID" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Appointments" Relationship="HealtheeModel.FK_Appointment_Patient" FromRole="Patient" ToRole="Appointment" />
+        </EntityType>
+        <Association Name="FK_Patient_MedicalRecord">
+          <End Type="HealtheeModel.MedicalRecord" Role="MedicalRecord" Multiplicity="1" />
+          <End Type="HealtheeModel.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalRecord">
+              <PropertyRef Name="MedicalRecordID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="MedicalRecordID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="NationalID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HomeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WorkNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Doctor_Person">
+          <End Type="HealtheeModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HealtheeModel.Doctor" Role="Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Person">
+          <End Type="HealtheeModel.Person" Role="Person" Multiplicity="1" />
+          <End Type="HealtheeModel.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="AppointmentID" />
@@ -431,8 +469,8 @@
           <Property Name="DoctorID" Type="Int32" Nullable="false" />
           <Property Name="PatientID" Type="Int32" Nullable="false" />
           <Property Name="StatusID" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppointmentDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppointmentTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Appointment_Doctor">
@@ -447,28 +485,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Appointment_Status">
-          <End Type="HealtheeModel.Status" Role="Status" Multiplicity="1" />
-          <End Type="HealtheeModel.Appointment" Role="Appointment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="StatusID" />
-            </Principal>
-            <Dependent Role="Appointment">
-              <PropertyRef Name="StatusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Patient">
-          <Key>
-            <PropertyRef Name="PatientID" />
-          </Key>
-          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PersonID" Type="Int32" Nullable="false" />
-          <Property Name="MedicalRecordID" Type="Int32" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_Appointment_Patient">
           <End Type="HealtheeModel.Patient" Role="Patient" Multiplicity="1" />
           <End Type="HealtheeModel.Appointment" Role="Appointment" Multiplicity="*" />
@@ -481,27 +497,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Patient_MedicalRecord">
-          <End Type="HealtheeModel.MedicalRecord" Role="MedicalRecord" Multiplicity="1" />
-          <End Type="HealtheeModel.Patient" Role="Patient" Multiplicity="*" />
+        <Association Name="FK_Appointment_Status">
+          <End Type="HealtheeModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="HealtheeModel.Appointment" Role="Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MedicalRecord">
-              <PropertyRef Name="MedicalRecordID" />
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
             </Principal>
-            <Dependent Role="Patient">
-              <PropertyRef Name="MedicalRecordID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Patient_Person">
-          <End Type="HealtheeModel.Person" Role="Person" Multiplicity="1" />
-          <End Type="HealtheeModel.Patient" Role="Patient" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Person">
-              <PropertyRef Name="PersonID" />
-            </Principal>
-            <Dependent Role="Patient">
-              <PropertyRef Name="PersonID" />
+            <Dependent Role="Appointment">
+              <PropertyRef Name="StatusID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -551,26 +555,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="HealtheeModel.Person">
-              <MappingFragment StoreEntitySet="Person">
-                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="NationalID" ColumnName="NationalID" />
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
-                <ScalarProperty Name="WorkNumber" ColumnName="WorkNumber" />
-                <ScalarProperty Name="Address1" ColumnName="Address1" />
-                <ScalarProperty Name="Address2" ColumnName="Address2" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Status">
             <EntityTypeMapping TypeName="HealtheeModel.Status">
               <MappingFragment StoreEntitySet="Status">
@@ -589,19 +573,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Appointments">
-            <EntityTypeMapping TypeName="HealtheeModel.Appointment">
-              <MappingFragment StoreEntitySet="Appointment">
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
-                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="HealtheeModel.Patient">
               <MappingFragment StoreEntitySet="Patient">
@@ -610,6 +581,40 @@
                 <ScalarProperty Name="MedicalRecordID" ColumnName="MedicalRecordID" />
                 <ScalarProperty Name="PersonID" ColumnName="PersonID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="HealtheeModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="WorkNumber" ColumnName="WorkNumber" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="HealtheeModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="AppointmentTime" ColumnName="AppointmentTime" />
+                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

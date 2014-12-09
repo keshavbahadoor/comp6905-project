@@ -40,5 +40,139 @@ namespace Healthee.Properties {
                 return ((string)(this["RequestLogFile"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("key-9f0a359c7542622c6cd8840b21862701")]
+        public string MailGunKey {
+            get {
+                return ((string)(this["MailGunKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("postmaster@sandboxf9b391d59f714d9a80d8b06f92955718.mailgun.org")]
+        public string MailGunFromEmail {
+            get {
+                return ((string)(this["MailGunFromEmail"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sandboxf9b391d59f714d9a80d8b06f92955718.mailgun.org")]
+        public string MailGunDomain {
+            get {
+                return ((string)(this["MailGunDomain"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org" +
+            "/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xh" +
+            "tml\" xmlns=\"http://www.w3.org/1999/xhtml\" style=\"font-family: \'Helvetica Neue\', " +
+            "\'Helvetica\', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; ma" +
+            "rgin: 0; padding: 0;\">\r\n  <head>\r\n    <meta name=\"viewport\" content=\"width=devic" +
+            "e-width\" />\r\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF" +
+            "-8\" />\r\n    <title>@title</title>\r\n  </head>\r\n  <body bgcolor=\"#f6f6f6\" style=\"f" +
+            "ont-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-si" +
+            "ze: 100%; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-text-si" +
+            "ze-adjust: none; width: 100% !important; height: 100%; margin: 0; padding: 0;\">&" +
+            "#13;\r\n&#13;\r\n&#13;\r\n<table style=\"font-family: \'Helvetica Neue\', \'Helvetica\', He" +
+            "lvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; width: 100%; marg" +
+            "in: 0; padding: 20px;\"><tr style=\"font-family: \'Helvetica Neue\', \'Helvetica\', He" +
+            "lvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; paddin" +
+            "g: 0;\"><td style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, " +
+            "sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;\"></td>&#13" +
+            ";\r\n\t\t<td bgcolor=\"#FFFFFF\" style=\"font-family: \'Helvetica Neue\', \'Helvetica\', He" +
+            "lvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; display: block !i" +
+            "mportant; max-width: 600px !important; clear: both !important; margin: 0 auto; p" +
+            "adding: 20px; border: 1px solid #f0f0f0;\">&#13;\r\n&#13;\r\n\t\t\t&#13;\r\n\t\t\t<div style=" +
+            "\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-" +
+            "size: 100%; line-height: 1.6; max-width: 600px; display: block; margin: 0 auto; " +
+            "padding: 0;\">&#13;\r\n\t\t\t<table style=\"font-family: \'Helvetica Neue\', \'Helvetica\'," +
+            " Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; width: 100%; m" +
+            "argin: 0; padding: 0;\"><tr style=\"font-family: \'Helvetica Neue\', \'Helvetica\', He" +
+            "lvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; paddin" +
+            "g: 0;\"><td style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, " +
+            "sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;\">&#13;\r\n\t\t" +
+            "\t\t\t\t<p style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans" +
+            "-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px" +
+            "; padding: 0;\">@greeting</p>&#13;\r\n\t\t\t\t\t\t<p style=\"font-family: \'Helvetica Neue\'" +
+            ", \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; " +
+            "font-weight: normal; margin: 0 0 10px; padding: 0;\">@paragraph1</p>&#13;\r\n\t\t\t\t\t\t" +
+            "<h1 style=\"font-family: \'Helvetica Neue\', Helvetica, Arial, \'Lucida Grande\', san" +
+            "s-serif; font-size: 36px; line-height: 1.2; color: #000; font-weight: 200; margi" +
+            "n: 40px 0 10px; padding: 0;\">@bold1</h1>&#13;\r\n\t\t\t\t\t\t<p style=\"font-family: \'Hel" +
+            "vetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 14px; line-h" +
+            "eight: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;\">@paragraph2</p>&" +
+            "#13;\r\n\t\t\t\t\t\t<h2 style=\"font-family: \'Helvetica Neue\', Helvetica, Arial, \'Lucida " +
+            "Grande\', sans-serif; font-size: 28px; line-height: 1.2; color: #000; font-weight" +
+            ": 200; margin: 40px 0 10px; padding: 0;\">@bold2</h2>&#13;\r\n\t\t\t\t\t\t<p style=\"font-" +
+            "family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: " +
+            "14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;\">@par" +
+            "agraph3</p>&#13;\r\n\t\t\t\t\t\t<table style=\"font-family: \'Helvetica Neue\', \'Helvetica\'" +
+            ", Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; width: 100%; " +
+            "margin: 0; padding: 0;\"><tr style=\"font-family: \'Helvetica Neue\', \'Helvetica\', H" +
+            "elvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; paddi" +
+            "ng: 0;\"><td style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial," +
+            " sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 10px 0;\">&#1" +
+            "3;\r\n\t\t\t\t\t\t\t\t\t<p style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Ar" +
+            "ial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin:" +
+            " 0 0 10px; padding: 0;\"><a href=\"@buttonurl\" style=\"font-family: \'Helvetica Neue" +
+            "\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 2; c" +
+            "olor: #FFF; text-decoration: none; font-weight: bold; text-align: center; cursor" +
+            ": pointer; display: inline-block; border-radius: 25px; background-color: #348eda" +
+            "; margin: 0 10px 0 0; padding: 0; border-color: #348eda; border-style: solid; bo" +
+            "rder-width: 10px 20px;\">@buttontext</a></p>&#13;\r\n\t\t\t\t\t\t\t\t</td>&#13;\r\n\t\t\t\t\t\t\t</t" +
+            "r></table><p style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial" +
+            ", sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 " +
+            "0 10px; padding: 0;\">@paragraph4</p>&#13;\r\n\t\t\t\t\t\t<p style=\"font-family: \'Helveti" +
+            "ca Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 14px; line-heigh" +
+            "t: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;\">@paragraph5</p>&#13;" +
+            "\r\n\t\t\t\t\t\t<p style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, " +
+            "sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 " +
+            "10px; padding: 0;\"><a href=\"@footerurl\" style=\"font-family: \'Helvetica Neue\', \'H" +
+            "elvetica\', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; colo" +
+            "r: #348eda; margin: 0; padding: 0;\">@footerlink</a></p>&#13;\r\n\t\t\t\t\t</td>&#13;\r\n\t" +
+            "\t\t\t</tr></table></div>&#13;\r\n\t\t\t&#13;\r\n\t\t\t\t\t\t\t\t\t&#13;\r\n\t\t</td>&#13;\r\n\t\t<td style" +
+            "=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font" +
+            "-size: 100%; line-height: 1.6; margin: 0; padding: 0;\"></td>&#13;\r\n\t</tr></table" +
+            "><table style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, san" +
+            "s-serif; font-size: 100%; line-height: 1.6; width: 100%; clear: both !important;" +
+            " margin: 0; padding: 0;\"><tr style=\"font-family: \'Helvetica Neue\', \'Helvetica\', " +
+            "Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padd" +
+            "ing: 0;\"><td style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial" +
+            ", sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;\"></td>&#" +
+            "13;\r\n\t\t<td style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, " +
+            "sans-serif; font-size: 100%; line-height: 1.6; display: block !important; max-wi" +
+            "dth: 600px !important; clear: both !important; margin: 0 auto; padding: 0;\">&#13" +
+            ";\r\n\t\t\t&#13;\r\n\t\t\t&#13;\r\n\t\t\t<div style=\"font-family: \'Helvetica Neue\', \'Helvetica\'" +
+            ", Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; max-width: 60" +
+            "0px; display: block; margin: 0 auto; padding: 0;\">&#13;\r\n\t\t\t\t<table style=\"font-" +
+            "family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: " +
+            "100%; line-height: 1.6; width: 100%; margin: 0; padding: 0;\"><tr style=\"font-fam" +
+            "ily: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 100" +
+            "%; line-height: 1.6; margin: 0; padding: 0;\"><td align=\"center\" style=\"font-fami" +
+            "ly: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 100%" +
+            "; line-height: 1.6; margin: 0; padding: 0;\">&#13;\r\n\t\t\t\t\t\t\t<p style=\"font-family:" +
+            " \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 12px; l" +
+            "ine-height: 1.6; color: #666; font-weight: normal; margin: 0 0 10px; padding: 0;" +
+            "\">Don\'t like these annoying emails? <a href=\"#d41d8cd98f00b204e9800998ecf8427e\" " +
+            "style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-serif;" +
+            " font-size: 100%; line-height: 1.6; color: #999; margin: 0; padding: 0;\"><unsubs" +
+            "cribe style=\"font-family: \'Helvetica Neue\', \'Helvetica\', Helvetica, Arial, sans-" +
+            "serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;\">Unsubscribe</u" +
+            "nsubscribe></a>.&#13;\r\n\t\t\t\t\t\t\t</p>&#13;\r\n\t\t\t\t\t\t</td>&#13;\r\n\t\t\t\t\t</tr></table></d" +
+            "iv>&#13;\r\n\t\t\t&#13;\r\n\t\t\t\t&#13;\r\n\t\t</td>&#13;\r\n\t\t<td style=\"font-family: \'Helvetic" +
+            "a Neue\', \'Helvetica\', Helvetica, Arial, sans-serif; font-size: 100%; line-height" +
+            ": 1.6; margin: 0; padding: 0;\"></td>&#13;\r\n\t</tr></table></body>\r\n</html>")]
+        public string EmailTemplate {
+            get {
+                return ((string)(this["EmailTemplate"]));
+            }
+        }
     }
 }
